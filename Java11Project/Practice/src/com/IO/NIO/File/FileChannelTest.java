@@ -33,5 +33,7 @@ public class FileChannelTest {
             fcout.write(buffer);
             buffer.clear();
         }
+        fcin.close();
+        fcout.close();
     }
 }
