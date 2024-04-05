@@ -4,9 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLOutput;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -22,7 +20,9 @@ public class StringTest {
 //        methodSevenTest();
 //        methodEightTest();
 //        staticMethodTest();
-        staticMethodDateFormat();
+//        staticMethodDateFormat();
+//        staticMethodTimeFormat();
+        staticMethodTwo();
     }
 
 
@@ -399,8 +399,57 @@ public class StringTest {
         System.out.println(String.format("中文月份的简称: %tb",date));
         System.out.println(String.format(Locale.US,"英文月份的简称: %tb",date));
         System.out.println(String.format(Locale.KOREA,"韩文月份的简称: %tb",date));
+        //%ta 星期
         System.out.println(String.format("中文星期的简称: %ta",date));
         System.out.println(String.format(Locale.US,"英文星期的简称: %ta",date));
         System.out.println(String.format(Locale.KOREA,"英文星期的简称: %ta",date));
+        ///%tm 月份
+        System.out.println(String.format("两位数字的月份(不足两位前面补0) : %tm",date));
+        //%td 日补0
+        System.out.println(String.format("两位数字的日 (不足两位前面补0) : %td",date));
+        //%te 日不补0
+        System.out.println(String.format("两位数字的日 (一位不补零) : %te",date));
+        System.out.println(String.format("两位数字的日 (一位不补零) : %te",date));
+    }
+
+    public static void staticMethodTimeFormat(){
+        Date date = new Date();
+        //%tH 24小时 不足补0
+        System.out.println(String.format("2位数字24时制的小时(不足2位补0) : %tH h",date));
+        //%tI 12小时 不足补0
+        System.out.println(String.format("2位数字12时制的小时(不足2位补0) : %tI h",date));
+        //%tk 24小时 不补0
+        System.out.println(String.format("2位数字24时制的小时(不足2位补0) : %tk h",date));
+        //%tl 12小时 不补0
+        System.out.println(String.format("2位数字12时制的小时(不足2位补0) : %tl h",date));
+        //%tM 分钟 不足补0
+        System.out.println(String.format("2位数字分钟 (不足2位补0) : %tM min",date));
+        //%tS 秒 不足补0
+        System.out.println(String.format("2位数字秒 (不足2位补0) : %tS s",date));
+        //%tL 三位毫秒 不足补0
+        System.out.println(String.format("3位数字毫秒 (不足3位补0) : %tL ms",date));
+        //%tN 九位毫秒 不足补0
+        System.out.println(String.format("9位数字毫秒 (不足9位补0) : %tN ms",date));
+        //%tp 上午或者下午
+        System.out.println(String.format(Locale.US,"小写字母的上午或者下午标记(英) : %tp",date));
+        System.out.println(String.format(Locale.CHINA,"小写字母的上午或者下午标记(中) : %tp",date));
+        System.out.println(String.format(Locale.JAPAN,"小写字母的上午或者下午标记(日) : %tp",date));
+        System.out.println(String.format(Locale.KOREA,"小写字母的上午或者下午标记(韩) : %tp",date));
+        //%tz
+        System.out.println(String.format("相对于GMT的RFC822时区偏移量 : %tz",date));
+        //%ts 待验证真实性
+        System.out.println(String.format("1990-1-1 00:00:00 到现在的经过的秒数 : %ts",date));
+        //%tQ 待验证真实性
+        System.out.println(String.format("1990-1-1 00:00:00 到现在的经过的毫秒数 : %tQ",date));
+    }
+
+    private static void staticMethodTwo(){
+        String[] strArrays = {"a","b","c","d"};
+        List<String> strList = new ArrayList<>();
+        for(int i = 97;i <= 100;i++)
+            strList.add(String.valueOf((char) i));
+        System.out.println(String.join("||", strArrays));
+        System.out.println(String.join("||",strList));
+        System.out.println(String.join("||","a","b","c","d"));
     }
 }
